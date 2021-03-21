@@ -1,3 +1,9 @@
+#' Calculate the cyclomatic complexity
+#' @description Calculate the cyclomatic complexity for each function in a file
+#' @param file The file to calculate for - a file-path.
+#'
+#' @return The cyclomatic complexity for each function in a file.
+#' @export
 cyclomatic_complexity <- function( file )
 {
   loaded_file <- readLines(file)
@@ -16,7 +22,3 @@ cyclomatic_complexity <- function( file )
 
   return(cyclocomps)
 }
-
-test_case <- "/home/jsco/Desktop/recovery/R/utils.R"
-
-cyclomatic_complexity(test_case) -> test_res

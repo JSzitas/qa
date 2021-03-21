@@ -1,3 +1,10 @@
+#' Calculate software maintainability
+#'
+#' @description Calculate the software maintainability index for a given file
+#' @param file The file to calculate for - a file-path.
+#'
+#' @return The maintainability index (a number).
+#' @export
 software_maintainability <- function( file )
 {
   halstead_V <- halstead_measures(file)[["program_volume"]]
@@ -10,8 +17,3 @@ software_maintainability <- function( file )
 
   return(maintainability)
 }
-
-
-test_case <- "/home/jsco/Desktop/recovery/R/trace_failures.R"
-
-software_maintainability(test_case) -> test_res

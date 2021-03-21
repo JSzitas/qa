@@ -1,3 +1,10 @@
+#' LOC calculator
+#'
+#' @description Calculate the lines of code in a file
+#' @param file The file to calculate for - a file-path.
+#'
+#' @return The list with two entries - the total and the non-empty lines of code.
+#' @export
 lines_of_code <- function( file )
 {
   loaded_file <- readLines(file)
@@ -6,7 +13,3 @@ lines_of_code <- function( file )
                 nonempty = length(loaded_file) - sum( loaded_file == "" ))
           )
 }
-
-test_case <- "/home/jsco/Desktop/recovery/R/utils.R"
-
-lines_of_code(test_case) -> test_res

@@ -1,3 +1,10 @@
+#' Calculate tokens pers line
+#'
+#' @description Calculate the number of tokens per line for a file
+#' @param file The file to calculate for - a file-path.
+#'
+#' @return The number of tokens per line for the entire file.
+#' @export
 tokens_per_line <- function( file )
 {
   tokens <- sourcetools::tokenize_file(file)
@@ -14,7 +21,3 @@ tokens_per_line <- function( file )
 
   return(n_token_line)
 }
-
-test_case <- "/home/jsco/Desktop/recovery/R/utils.R"
-
-tokens_per_line(test_case) -> test_res
