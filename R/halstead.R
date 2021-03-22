@@ -1,3 +1,21 @@
+#' Calculate halstead software complexity measures
+#'
+#' @description Calculate the halstead software complexity measures for a given file
+#' @param file The file to calculate for - a file-path.
+#'
+#' @return A list with following elements:
+#' \itemize{
+#' \item{program vocabulary}
+#' \item{program length}
+#' \item{program length (estimated)}
+#' \item{program volume}
+#' \item{program difficulty}
+#' \item{program effort}
+#' \item{time to program (minutes)}
+#' \item{number of bugs}
+#' }
+#' @details See also \url{ https://en.wikipedia.org/wiki/Halstead_complexity_measures }
+#' @export
 halstead_measures <- function(file)
 {
   tokens <- sourcetools::tokenize_file(file)
@@ -27,8 +45,3 @@ halstead_measures <- function(file)
 
   return(result)
 }
-
-
-test_case <- "/home/jsco/Desktop/recovery/R/utils.R"
-
-halstead_measures(test_case) -> test_result
