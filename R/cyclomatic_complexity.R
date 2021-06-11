@@ -6,19 +6,21 @@
 #' @export
 cyclomatic_complexity <- function( file )
 {
-  loaded_file <- readLines(file)
+  code <- readLines(file)
 
   custom_env <- new.env()
-  eval( parse(text = loaded_file), envir = custom_env)
+  eval( parse(text = code), envir = custom_env)
 
-  function_indices <- names(sapply( custom_env, is.function ))
-  funs <- as.list(custom_env)
+  custom_env <- as.list(custom_env, all.names = TRUE)
 
-  cyclocomps <- sapply( funs[function_indices],
+  fun_indices <- names( sapply( custom_env, is.function ))
+
+  funs <- custom_env[fun_indices]
+  cyclocomps <- sapply( funs,
                         function(i){
-    cyclocomp::cyclocomp(expr = i)
-  })
-  names(cyclocomps) <- function_indices
+                          cyclocomp::cyclocomp(expr = i)
+                        })
+  names(cyclocomps) <- fun_indices
 
   return(cyclocomps)
 }
